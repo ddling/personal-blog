@@ -7,6 +7,8 @@ import java.util.Date;
 @Data
 public class Article {
 
+    private Integer id;
+
     private String title;
 
     private String summary;
@@ -15,6 +17,8 @@ public class Article {
 
     private String renderBody;
 
-    private Date createDate;
+    private Date createTime;
+
+    private Date updateTime;
 
 }

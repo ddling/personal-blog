@@ -1,10 +1,10 @@
 package org.ddling.service;
 
+import org.ddling.domain.Article;
 import org.springframework.stereotype.Service;
 
-@Service
 public interface ArticleService {
 
-
+    int publish(Article article);
 
 }

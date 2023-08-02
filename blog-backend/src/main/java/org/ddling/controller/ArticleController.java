@@ -2,6 +2,8 @@ package org.ddling.controller;
 
 import org.ddling.common.Response;
 import org.ddling.domain.Article;
+import org.ddling.service.ArticleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,9 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ArticleController {
 
+    @Autowired
+    private ArticleService articleService;
+
     @RequestMapping(value = "/publish", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     public Response publish(@RequestBody Article article) {
         System.out.println(article);
+        articleService.publish(article);
         return new Response();
     }
 
