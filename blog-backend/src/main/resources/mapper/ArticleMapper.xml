@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ddling.repository.ArticleRepository">
+    
+    <resultMap id="article" type="org.ddling.domain.Article">
+        <id column="id" property="id" />
+        <result column="title" property="title" />
+        <result column="summary" property="summary" />
+        <result column="body" property="body" />
+        <result column="renderBody" property="renderBody" />
+        <result column="createTime" property="createTime" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+        <result column="updateTime" property="updateTime" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    
+    <insert id="insertArticle">
+        INSERT INTO article(title, summary, body, renderBody, createTime, updateTime) VALUES(#{title}, #{summary}, #{body}, #{renderBody}, #{createTime}, #{updateTime})
+    </insert>
+
+    <select id="listArticles">
+        select id, title, summary, body, renderBody, createTime, updateTime from article
+    </select>
+</mapper>

@@ -3,3 +3,6 @@ spring:
     url: jdbc:mysql://localhost:3306/blog?useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: ${MYSQL_PASSWORD}
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
