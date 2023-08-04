@@ -1,5 +1,6 @@
 package org.ddling.controller;
 
+import jakarta.validation.Valid;
 import org.ddling.common.Response;
 import org.ddling.domain.Tag;
 import org.ddling.service.TagService;
@@ -25,7 +26,7 @@ public class TagController {
 
     @ResponseBody
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Response addTag(@RequestBody Tag tag) {
+    public Response addTag(@Valid @RequestBody Tag tag) {
          tagService.addTag(tag);
          return Response.success();
     }

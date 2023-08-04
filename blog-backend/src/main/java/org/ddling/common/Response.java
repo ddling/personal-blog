@@ -6,9 +6,7 @@ import lombok.Data;
 @Data
 public class Response<T> {
 
-    private boolean success;
-
-    private String code;
+    private int code;
 
     private String msg;
 
@@ -17,17 +15,27 @@ public class Response<T> {
 
     public static <T> Response<T> success() {
         Response<T> response = new Response<>();
-        response.setSuccess(true);
-        response.setMsg("success");
+        setResult(response, ResultCode.SUCCESS);
         return response;
     }
 
     public static <T> Response<T> success(T obj) {
         Response<T> response = new Response<>();
-        response.setSuccess(true);
-        response.setMsg("success");
+        setResult(response, ResultCode.SUCCESS);
         response.setData(obj);
         return response;
+    }
+
+    public static <T> Response<T> failure(ResultCode resultCode, String msg) {
+        Response<T> response = new Response<>();
+        setResult(response, resultCode);
+        response.setMsg(msg);
+        return response;
+    }
+
+    private static void setResult(Response response, ResultCode resultCode) {
+        response.setCode(resultCode.code);
+        response.setMsg(resultCode.msg);
     }
 
 }

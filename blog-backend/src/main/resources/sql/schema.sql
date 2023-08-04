@@ -66,7 +66,7 @@ CREATE TABLE `blog`.`post_category` (
 
 CREATE TABLE `blog`.`tag` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(75) NOT NULL,
+  `title` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`id`));
 
 CREATE TABLE `blog`.`post_tag` (
