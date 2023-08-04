@@ -5,23 +5,22 @@
 
 <mapper namespace="org.ddling.repository.TagRepository">
 
-    <resultMap id="tag" type="org.ddling.domain.Tag">
+    <resultMap id="tagMap" type="org.ddling.domain.Tag">
         <id column="id" property="id" />
         <result column="title" property="title" />
-        <result column="metaTitle" property="metaTitle" />
-        <result column="content" property="content" />
     </resultMap>
 
-    <select id="getAllTags">
-        select id, title, metaTitle, content from tag
+    <select id="fetchTags" resultMap="tagMap">
+        select id, title from tag
     </select>
 
     <insert id="addTag">
-        INSERT INTO tag(title, metaTitle, content) VALUES(#{title}, #{metaTitle}, #{content})
+        INSERT INTO tag(title) VALUES(#{title})
     </insert>
 
     <delete id="deleteTag">
-        DELETE FROM tag WHERE id=#{id}
+        DELETE FROM tag WHERE id=#{id};
+        DELETE FROM post_tag WHERE tagId=#{id};
     </delete>
 
 </mapper>

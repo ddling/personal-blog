@@ -5,21 +5,24 @@
 
 <mapper namespace="org.ddling.repository.ArticleRepository">
     
-    <resultMap id="article" type="org.ddling.domain.Article">
+    <resultMap id="articleMap" type="org.ddling.domain.Article">
         <id column="id" property="id" />
+        <id column="authorId" property="authorId" />
         <result column="title" property="title" />
         <result column="summary" property="summary" />
-        <result column="body" property="body" />
-        <result column="renderBody" property="renderBody" />
-        <result column="createTime" property="createTime" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
-        <result column="updateTime" property="updateTime" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+        <result column="published" property="published" />
+        <result column="createdAt" property="createdAt" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+        <result column="updatedAt" property="updatedAt" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+        <result column="publishedAt" property="publishedAt" javaType="java.util.Date" jdbcType="TIMESTAMP"/>
+        <result column="content" property="content" />
+        <result column="coverImg" property="coverImg" />
     </resultMap>
     
     <insert id="insertArticle">
         INSERT INTO article(title, summary, body, renderBody, createTime, updateTime) VALUES(#{title}, #{summary}, #{body}, #{renderBody}, #{createTime}, #{updateTime})
     </insert>
 
-    <select id="listArticles">
+    <select id="fetchArticles" resultMap="articleMap">
         select id, title, summary, body, renderBody, createTime, updateTime from article
     </select>
 </mapper>

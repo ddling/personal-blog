@@ -1,15 +1,27 @@
 CREATE SCHEMA `blog` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
+CREATE TABLE `blog`.`user` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(50) NULL DEFAULT NULL,
+  `mobile` VARCHAR(15) NULL,
+  `email` VARCHAR(50) NULL,
+  `intro` TINYTEXT NULL DEFAULT NULL,
+  `userImg` VARCHAR(50) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `uq_mobile` (`mobile` ASC),
+  UNIQUE INDEX `uq_email` (`email` ASC) );
+
 CREATE TABLE `blog`.`post` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `authorId` BIGINT NOT NULL,
   `title` VARCHAR(75) NOT NULL,
-  `metaTitle` VARCHAR(100) NULL,
   `summary` TINYTEXT NULL,
   `published` TINYINT(1) NOT NULL DEFAULT 0,
   `createdAt` DATETIME NOT NULL,
   `updatedAt` DATETIME NULL DEFAULT NULL,
   `publishedAt` DATETIME NULL DEFAULT NULL,
   `content` TEXT NULL DEFAULT NULL,
+  `coverImg` VARCHAR(75) DEFAULT NULL,
   PRIMARY KEY (`id`));
 
 CREATE TABLE `blog`.`post_comment` (
@@ -55,8 +67,6 @@ CREATE TABLE `blog`.`post_category` (
 CREATE TABLE `blog`.`tag` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(75) NOT NULL,
-  `metaTitle` VARCHAR(100) NULL DEFAULT NULL,
-  `content` TEXT NULL DEFAULT NULL,
   PRIMARY KEY (`id`));
 
 CREATE TABLE `blog`.`post_tag` (

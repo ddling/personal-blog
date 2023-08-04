@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping(path = "/tag")
+@RequestMapping(path = "/tags")
 @RestController
 public class TagController {
 
@@ -18,7 +18,7 @@ public class TagController {
 
     @ResponseBody
     @GetMapping()
-    public Response getAllTags() {
+    public Response getTags() {
         List<Tag> tagList = tagService.getAllTags();
         return Response.success(tagList);
     }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequestMapping(path = "/article")
@@ -23,11 +24,11 @@ public class ArticleController {
         return new Response();
     }
 
-    @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public Response listArticles() {
-        List<Article> articles = articleService.listArticles();
-        System.out.println(articles);
-        return new Response();
+        List<Article> articles = new ArrayList<>();
+
+        return Response.success(articles);
     }
 
 }

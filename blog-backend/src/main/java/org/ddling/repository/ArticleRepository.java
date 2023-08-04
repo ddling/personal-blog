@@ -10,6 +10,6 @@ public interface ArticleRepository {
 
     int insertArticle(Article article);
 
-    List<Article> listArticles();
+    List<Article> fetchArticles();
 
 }

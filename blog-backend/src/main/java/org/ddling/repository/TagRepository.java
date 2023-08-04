@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface TagRepository {
 
-    List<Tag> getAllTags();
+    List<Tag> fetchTags();
 
     int addTag(Tag newTag);
 

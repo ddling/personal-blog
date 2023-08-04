@@ -16,7 +16,7 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public List<Tag> getAllTags() {
-        return tagRepository.getAllTags();
+        return tagRepository.fetchTags();
     }
 
     @Override

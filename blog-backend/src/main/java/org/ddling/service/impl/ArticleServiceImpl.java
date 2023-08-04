@@ -19,14 +19,12 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public int publish(Article article) {
         Timestamp timestamp = Utils.getCurrentTimeStamp();
-        article.setCreateTime(timestamp);
-        article.setUpdateTime(timestamp);
         return articleRepository.insertArticle(article);
     }
 
     @Override
     public List<Article> listArticles() {
-        return articleRepository.listArticles();
+        return articleRepository.fetchArticles();
     }
 
 }
