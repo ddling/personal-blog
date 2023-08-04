@@ -68,5 +68,5 @@ CREATE TABLE `blog`.`post_tag` (
   CONSTRAINT `fk_pc_tag`
     FOREIGN KEY (`tagId`)
     REFERENCES `blog`.`tag` (`id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION);
